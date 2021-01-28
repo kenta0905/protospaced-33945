@@ -7,7 +7,12 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    prototype.create(prototype_params)
+    #prototype.create(prototype_params)
+    if current_prototype.create(prototype_params)
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private
